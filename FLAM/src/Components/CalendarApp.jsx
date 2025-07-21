@@ -40,10 +40,18 @@ const CalendarApp = () => {
     const handleDayClick = (day) => {
         const clickDate = new Date(currentYear,currentMonth,day)
         const today = new Date()
-        if(clickDate  >= today){
+        if(clickDate  >= today || isSameDate(clickDate,today)){
             setSelectedDate(clickDate)
             setShowEventPopup(true)
         }
+    }
+
+    const isSameDate = (date1, date2) => {
+        return (
+            date1.getFullYear() === date2.getFullYear() &&
+            date1.getMonth() === date2.getMonth() &&
+            date1.getDate() === date2.getDate()
+        );
     }
 
   return (
