@@ -26,6 +26,7 @@ const CalendarApp = () => {
     const [events,setEvents] = useState([])
     const [eventTime, setEventTime] = useState({hours : '00',minutes:"00"})
     const [eventText,setEventText] = useState('')
+    const [editingEvents,setEditingEvent] = useState(null)
 
     const daysInMonth = new Date(currentYear, currentMonth +1, 0).getDate()
     const firstDayOfMonth = new Date(currentYear,currentMonth,1).getDay()
@@ -48,6 +49,7 @@ const CalendarApp = () => {
             setShowEventPopup(true)
             setEventTime({hours : '00',minutes:"00"})
             setEventText("")
+            setEditingEvent(null)
         }
     }
 
@@ -61,6 +63,7 @@ const CalendarApp = () => {
 
     const handleEventSubmit = () => {
         const newEvent = {
+            id: editingEvents ? editingEvents.id : date.now(),
             date: selectedDate,
             time:`${eventTime.hours.padStart(2,'0')}:${eventTime.minutes.padStart(2,'0')}`,
             text:eventText,
