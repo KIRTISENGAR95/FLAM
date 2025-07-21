@@ -12,13 +12,13 @@ const CalendarApp = () => {
                 </div>
             </div>
             <div className="weekdays">
-                <span>Sunday</span>
-                <span>Monday</span>
-                <span>Tuesday</span>
-                <span>Wednesday</span>
-                <span>Thursday</span>
-                <span>Friday</span>
-                <span>Saturday</span>
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thur</span>
+                <span>Fri</span>
+                <span>Sat</span>
             </div>
             <div className="days ">
                 <span>1</span>
@@ -37,7 +37,7 @@ const CalendarApp = () => {
                 <span>14</span>
                 <span>15</span>
                 <span>16</span>
-                <span>17</span>
+                <span className="current-day">17</span>
                 <span>18</span>
                 <span>19</span>
                 <span>20</span>
