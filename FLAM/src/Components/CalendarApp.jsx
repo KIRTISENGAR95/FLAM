@@ -25,7 +25,7 @@ const CalendarApp = () => {
     const [showEventPopup,setShowEventPopup] = useState(false)
     const [events,setEvents] = useState([])
     const [eventTime, setEventTime] = useState({hours : '00',minutes:"00"})
-    // const [eventText,setEventText] = 
+    const [eventText,setEventText] = useState('')
 
     const daysInMonth = new Date(currentYear, currentMonth +1, 0).getDate()
     const firstDayOfMonth = new Date(currentYear,currentMonth,1).getDay()
@@ -46,6 +46,8 @@ const CalendarApp = () => {
         if(clickDate  >= today || isSameDate(clickDate,today)){
             setSelectedDate(clickDate)
             setShowEventPopup(true)
+            setEventTime({hours : '00',minutes:"00"})
+            setEventText("")
         }
     }
 
@@ -55,6 +57,18 @@ const CalendarApp = () => {
             date1.getMonth() === date2.getMonth() &&
             date1.getDate() === date2.getDate()
         );
+    }
+
+    const handleEventSubmit = () => {
+        const newEvent = {
+            date: selectedDate,
+            time:`${eventTime.hours.padStart(2,'0')}:${eventTime.minutes.padStart(2,'0')}`,
+            text:eventText,
+        }
+        setEvents([...events,newEvent])
+        setEventTime({hours : '00',minutes:"00"})
+        setEventText("")
+        setShowEventPopup(false) 
     }
 
   return (
@@ -81,7 +95,9 @@ const CalendarApp = () => {
             {showEventPopup && (<div className="event-popup">
                 <div className="time-input">
                     <div className="event-popup-time">Time</div>
-                    <input type="number" name="hours" min={0} max={24} className="hours"/>
+                    <input type="number" name="hours" min={0} max={24} className="hours" value={eventTime.hours} onChange={(e) =>
+                        setEventTime({...eventTime,hours:e.target.value})
+                    }/>
                     <input type="number" name="minutes" min={0} max={60} className="minutes"/>
                 </div>
                 <textarea placeholder="Enter Event Text (Maximum 60 Characters)"></textarea>
