@@ -145,13 +145,9 @@ const CalendarApp = () => {
                 <div className="time-input">
                     <div className="event-popup-time">Time</div>
                     <input type="number" name="hours" min={0} max={24} className="hours" 
-                    value={eventTime.hours} onChange={(e) =>
-                        setEventTime({...eventTime,hours:e.target.value})
-                    }/>
+                    value={eventTime.hours} onChange={handleTimeChange}/>
                     <input type="number" name="minutes" min={0} max={60} className="minutes"
-                    value={eventTime.minutes} onChange={(e) =>
-                        setEventTime({...eventTime,minutes:e.target.value})
-                    }
+                    value={eventTime.minutes} onChange={handleTimeChange}
                     />
                 </div>
                 <textarea placeholder="Enter Event Text (Maximum 60 Characters)" value = {eventText} onChange={(e) =>{
