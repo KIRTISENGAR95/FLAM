@@ -63,16 +63,47 @@ const CalendarApp = () => {
 
     const handleEventSubmit = () => {
         const newEvent = {
-            id: editingEvents ? editingEvents.id : date.now(),
+            id: editingEvents ? editingEvents.id : Date.now(),
             date: selectedDate,
             time:`${eventTime.hours.padStart(2,'0')}:${eventTime.minutes.padStart(2,'0')}`,
             text:eventText,
         }
-        setEvents([...events,newEvent])
+
+
+        let updatedEvents = [...events]
+
+        if(editingEvents){
+            updatedEvents = updatedEvents.map((event) => event.id === editingEvents.id ? newEvent:event,
+        )}
+        else{
+            updatedEvents.push(newEvent)
+        
+        }
+
+
+        updatedEvents.sort((a,b) => new Date(a.date) - new Date(b.date))
+
+
+        setEvents(updatedEvents)
         setEventTime({hours : '00',minutes:"00"})
         setEventText("")
         setShowEventPopup(false) 
+        setEditingEvent(null)
     }
+
+
+    const handleEditEvent = (event) => {
+        setSelectedDate(new Date(event.date))
+        setEventTime({
+            hours: event.time.split(':')[0],
+            minutes: event.time.split(':')[1],
+
+        })
+        setEventText(event.text)
+        setEditingEvent(event)
+        setShowEventPopup(true)
+    }
+
 
   return (
     <div className="calendar-app">
@@ -127,7 +158,7 @@ const CalendarApp = () => {
                 </div>
                 <div className="event-text">{event.text}</div>
                 <div className="event-buttons">
-                    <i className="bx bxs-edit-alt"></i>
+                    <i className="bx bxs-edit-alt" onClick={() => handleEditEvent(event)}></i>
                     <i className="bx bxs-message-alt-x"></i>
                 </div>
             </div>
