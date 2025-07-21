@@ -1,10 +1,32 @@
+import { useState } from "react"
+
 const CalendarApp = () => {
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    const monthsOfYear = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ]
+
+    const currentData = new Date()
+    const [currentMonth,setCurrentMonth] = useState(currentData.getMonth())
+    const [currentYear,setCurrentYear] = useState(currentData.getFullYear())
+    console.log(currentMonth,currentYear,currentData)
   return (
     <div className="calendar-app">
         <div className="calendar">
             <h1 className="heading">Calendar</h1>
             <div className="navigate-date">
-                <h2 className="month">May,</h2>
+                <h2 className="month">July,</h2>
                 <h2 className="year">2025</h2>
                 <div className="buttons">
                     <i className="bx bx-chevron-left"></i>
