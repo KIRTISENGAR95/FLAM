@@ -23,6 +23,9 @@ const CalendarApp = () => {
     const [currentYear,setCurrentYear] = useState(currentDate.getFullYear())
     const [selectedDate,setSelectedDate] = useState(currentDate)
     const [showEventPopup,setShowEventPopup] = useState(false)
+    const [events,setEvents] = useState([])
+    const [eventTime, setEventTime] = useState({hours : '00',minutes:"00"})
+    // const [eventText,setEventText] = 
 
     const daysInMonth = new Date(currentYear, currentMonth +1, 0).getDate()
     const firstDayOfMonth = new Date(currentYear,currentMonth,1).getDay()

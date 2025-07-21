@@ -239,59 +239,71 @@
     transform: translateY(0.1rem);
 }
 
-.event{
-    width:100%;
-    height:7rem;
-    background-color:#00a3ff ;
-    padding:1.5rem 0;
+.event {
+    width: 100%;
+    min-height: 6rem;
+    background-color: #00a3ff;
+    padding: 1rem;
     border-radius: 1rem;
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
 }
 
-.event-date-wrapper{
+.event-data-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:25%;
-    border-right: .1rem solid rgba(255,255,255,0.5);
+    justify-content: center;
+    max-width: 110px;
+    border-right: 1.5px solid rgba(255, 255, 255, 0.4);
+    padding-right: 1rem;
+    margin-right: 1rem;
+    align-self: stretch;
 }
 
-.event-date{
-    font-size: clamp(1rem,1cqi,1.2rem);
-    color:#ddd;
+.event-date {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.25rem;
 }
 
-.event-time{
-    font-size: clamp(1.3rem,1cqi,1.6rem);
-    line-height: 4rem;
+.event-time {
+    font-size: 1.6rem;
+    line-height: 1.8rem;
     font-weight: bold;
     color: #fff;
 }
 
-.event-text{
-    font-size: clamp(1.2rem,1cqi,1.4rem);
-    line-height: 2rem;
+.event-text {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
     color: #fff;
-    width:75%;
-    padding:0 3rem 0 1rem;
-    overflow-wrap:break-word ;
+    padding-right: 3.5rem;
+    overflow-wrap: break-word;
 }
 
-.event-buttons{
+.event-buttons {
     position: absolute;
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
-    right:1rem;
-    display:flex;
-    flex-direction:column;
-    row-gap: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
 }
 
-.event-buttons i{
-    font-size:1.6rem;
-    color:#fff;
-    cursor:pointer;
+.event-buttons i {
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.event-buttons i:hover {
+    opacity: 0.8;
 }
