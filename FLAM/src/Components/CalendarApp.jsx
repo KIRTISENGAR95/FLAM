@@ -18,9 +18,15 @@ const CalendarApp = () => {
     ]
 
     const currentData = new Date()
+
     const [currentMonth,setCurrentMonth] = useState(currentData.getMonth())
     const [currentYear,setCurrentYear] = useState(currentData.getFullYear())
-    console.log(currentMonth,currentYear,currentData)
+
+    const daysInMonth = new Date(currentYear, currentMonth +1, 0).getDate()
+    const firstDayOfMonth = new Date(currentYear,currentMonth,1).getDay()
+
+    console.log(daysInMonth,firstDayOfMonth)
+
   return (
     <div className="calendar-app">
         <div className="calendar">
@@ -34,13 +40,7 @@ const CalendarApp = () => {
                 </div>
             </div>
             <div className="weekdays">
-                <span>Sun</span>
-                <span>Mon</span>
-                <span>Tue</span>
-                <span>Wed</span>
-                <span>Thu</span>
-                <span>Fri</span>
-                <span>Sat</span>
+                {daysOfWeek.map((day) => <span key = {day}>{day}</span>)}
             </div>
             <div className="days ">
                 <span>1</span>
