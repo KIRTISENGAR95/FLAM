@@ -105,6 +105,14 @@ const CalendarApp = () => {
     }
 
 
+    const handleDeleteEvent = (eventId) => {
+        const updatedEvents = events.filter((event) => event.id !== eventId)
+
+        setEvents(updatedEvents)
+        
+    }
+
+
   return (
     <div className="calendar-app">
         <div className="calendar">
@@ -145,7 +153,7 @@ const CalendarApp = () => {
                     }
                 }}
                 ></textarea>
-                <button className="event-popup-btn" onClick={handleEventSubmit}>Add Events</button>
+                <button className="event-popup-btn" onClick={handleEventSubmit}>{editingEvents ? 'update Event' : 'Add Event'}</button>
                 <button className="close-events-popup" onClick={() => setShowEventPopup(false)}>
                     <i className="bx bx-x"></i>
                 </button>
