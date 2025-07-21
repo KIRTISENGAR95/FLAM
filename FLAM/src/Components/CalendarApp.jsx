@@ -109,7 +109,14 @@ const CalendarApp = () => {
         const updatedEvents = events.filter((event) => event.id !== eventId)
 
         setEvents(updatedEvents)
-        
+
+    }
+
+
+    const handleTimeChange = (e) => {
+        const {name,value} = e.target
+
+        setEventTime ((prevTime) => ({...prevTime, [name]:value.padStart(2, '0')}))
     }
 
 
@@ -167,7 +174,7 @@ const CalendarApp = () => {
                 <div className="event-text">{event.text}</div>
                 <div className="event-buttons">
                     <i className="bx bxs-edit-alt" onClick={() => handleEditEvent(event)}></i>
-                    <i className="bx bxs-message-alt-x"></i>
+                    <i className="bx bxs-message-alt-x" onClick={() => handleDeleteEvent(event.id)}></i>
                 </div>
             </div>
             ))}
